@@ -1,0 +1,21 @@
+# Python / Backend
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Massive AI Models & Data (Too large for standard Git)
+*.keras
+*.h5
+*.tflite
+QuantumFusion_FullModel/
+backend/QuantumFusion_FullModel/
+C-NMC_Leukemia/
+
+# Database
+backend/bloodscan.db
+
+# Frontend Dependencies & Build Output
+frontend/node_modules/
+frontend/dist/
+.DS_Store
