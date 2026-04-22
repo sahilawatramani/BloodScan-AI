@@ -4,10 +4,8 @@ __pycache__/
 venv/
 .env
 
-# Massive AI Models & Data (Too large for standard Git)
-*.keras
-*.h5
-*.tflite
+# Massive Data (Too large for standard Git)
+# Model files are now tracked with Git LFS
 QuantumFusion_FullModel/
 backend/QuantumFusion_FullModel/
 C-NMC_Leukemia/
