@@ -5,10 +5,9 @@ venv/
 .env
 
 # Massive Data (Too large for standard Git)
-# Model files are now tracked with Git LFS
+# Model files and dataset are now tracked with Git LFS
 QuantumFusion_FullModel/
 backend/QuantumFusion_FullModel/
-C-NMC_Leukemia/
 
 # Database
 backend/bloodscan.db
