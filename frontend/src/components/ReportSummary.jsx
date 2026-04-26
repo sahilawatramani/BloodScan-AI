@@ -89,7 +89,7 @@ export default function ReportSummary({ summary, metrics, patientInfo, results }
           </p>
           {/* Tooltip */}
           <div className="absolute inset-x-0 bottom-full mb-2 hidden group-hover:block z-10 bg-[rgba(10,15,36,0.95)] backdrop-blur-md p-2 rounded-lg text-xs text-gray-300">
-            Ratio of leukemic blasts to total cells. >20% often indicates acute leukemia in bone marrow.
+            Ratio of leukemic blasts to total cells. &gt;20% often indicates acute leukemia in bone marrow.
           </div>
         </div>
       </div>
