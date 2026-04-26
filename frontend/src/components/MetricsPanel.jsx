@@ -2,16 +2,18 @@ import { motion } from "framer-motion";
 
 export default function MetricsPanel({ metrics }) {
   const metricConfig = {
-    accuracy: { label: "Accuracy", icon: "🎯", color: "#3A86FF" },
-    precision: { label: "Precision", icon: "🔬", color: "#00F5D4" },
-    recall: { label: "Recall", icon: "📡", color: "#FF006E" },
-    f1: { label: "F1 Score", icon: "⚡", color: "#FFAA00" },
+    accuracy: { label: "Accuracy", icon: "🎯", color: "#3A86FF", desc: "Overall correctness of the model's predictions." },
+    precision: { label: "Precision", icon: "🔬", color: "#00F5D4", desc: "When the model flags cancer, how often is it right? (Low false positives)" },
+    recall: { label: "Recall", icon: "📡", color: "#FF006E", desc: "How many actual cancer cells did the model successfully find? (Low false negatives)" },
+    f1: { label: "F1 Score", icon: "⚡", color: "#FFAA00", desc: "Harmonic balance between Precision and Recall." },
   };
 
   return (
     <div className="mt-6">
-      <h2 className="text-lg font-bold text-white mb-1">Model Performance</h2>
-      <p className="text-xs text-gray-500 mb-4">Evaluation metrics on test set</p>
+      <h2 className="text-lg font-bold text-white mb-1">Model Performance & Reliability</h2>
+      <p className="text-xs text-gray-500 mb-4">
+        These metrics indicate the reliability of the AI model based on its training on clinical data. A higher percentage means greater diagnostic confidence.
+      </p>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {Object.entries(metrics).map(([k, v], i) => {
@@ -51,6 +53,13 @@ export default function MetricsPanel({ metrics }) {
               >
                 {percentage.toFixed(1)}%
               </motion.p>
+              {config.desc && (
+                <div className="absolute inset-0 bg-[rgba(10,15,36,0.95)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3 rounded-2xl z-20 backdrop-blur-sm">
+                  <p className="text-xs text-gray-300 text-center leading-relaxed">
+                    {config.desc}
+                  </p>
+                </div>
+              )}
             </motion.div>
           );
         })}

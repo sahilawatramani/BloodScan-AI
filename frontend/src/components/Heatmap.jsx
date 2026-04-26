@@ -40,7 +40,7 @@ export default function Heatmap({ heatmapData, files }) {
             <h2 className="text-lg font-bold text-white">Model Attention Heatmap</h2>
             <p className="text-xs text-gray-500">
               {displayData
-                ? "Saliency-based visualization of model focus regions"
+                ? "Gradient-weighted Class Activation Mapping (Grad-CAM) provides clinical explainability by highlighting the morphological features the AI used to make its prediction."
                 : "Upload images and run analysis to generate attention maps"}
             </p>
           </div>
@@ -94,7 +94,10 @@ export default function Heatmap({ heatmapData, files }) {
 
             {/* Prediction overlay */}
             {displayData.prediction && (
-              <div className="absolute bottom-3 left-3 right-3">
+              <div className="absolute bottom-3 left-3 right-3 flex flex-col gap-2">
+                <div className="glass rounded-lg p-2 text-[10px] text-gray-300 backdrop-blur-md">
+                  <span className="font-bold text-white">How to read this:</span> Warm colors (red/yellow) indicate regions of high morphological importance for the model's decision. Cool colors (blue) were ignored.
+                </div>
                 <div className="glass rounded-lg px-4 py-2 flex items-center justify-between">
                   <span className={`text-sm font-bold ${
                     displayData.class === "ALL" ? "text-[#FF006E]" : "text-[#00FF88]"

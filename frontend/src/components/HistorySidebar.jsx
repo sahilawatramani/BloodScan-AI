@@ -1,6 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 export default function HistorySidebar({ isOpen, onToggle, historyData = [], onRestoreHistory }) {
+  const [showAll, setShowAll] = useState(false);
+  const displayData = showAll ? historyData : historyData.slice(0, 5);
   return (
     <>
       {/* Toggle button */}
@@ -45,10 +48,10 @@ export default function HistorySidebar({ isOpen, onToggle, historyData = [], onR
                 </div>
 
                 <div className="space-y-3">
-                  {historyData.length === 0 ? (
+                  {displayData.length === 0 ? (
                     <p className="text-gray-500 text-sm text-center py-4">No recent analyses found.</p>
                   ) : (
-                    historyData.map((item, i) => (
+                    displayData.map((item, i) => (
                       <motion.div
                         key={item.id}
                         onClick={() => onRestoreHistory && onRestoreHistory(item)}
@@ -78,11 +81,16 @@ export default function HistorySidebar({ isOpen, onToggle, historyData = [], onR
                   )}
                 </div>
 
-                <div className="mt-6 text-center">
-                  <button className="btn-secondary text-xs w-full">
-                    View All History
-                  </button>
-                </div>
+                {historyData.length > 5 && (
+                  <div className="mt-6 text-center">
+                    <button 
+                      onClick={() => setShowAll(!showAll)} 
+                      className="btn-secondary text-xs w-full"
+                    >
+                      {showAll ? "Show Less" : `View All History (${historyData.length})`}
+                    </button>
+                  </div>
+                )}
               </div>
             </motion.aside>
           </>

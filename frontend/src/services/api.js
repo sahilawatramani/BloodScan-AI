@@ -5,7 +5,9 @@
 // Falls back to demo mode if backend is unreachable.
 // ============================================================
 
-const API_BASE = "/api";
+const RAW_API_URL = import.meta.env.VITE_API_URL || "/api";
+// Remove trailing slash if present to prevent malformed URLs like "https://api.com//health"
+const API_BASE = RAW_API_URL.endsWith('/') ? RAW_API_URL.slice(0, -1) : RAW_API_URL;
 
 /**
  * Check if the backend is reachable and healthy.

@@ -49,9 +49,9 @@ export default function ReportSummary({ summary, metrics, patientInfo, results }
       <div className="section-divider" />
 
       {/* Diagnosis */}
-      <div className="flex items-center gap-4 mb-6">
+      <div className="flex items-center gap-4 mb-4">
         <div>
-          <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Final Diagnosis</p>
+          <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Final AI Diagnosis</p>
           <p className={`text-2xl font-bold ${
             summary.patientPrediction === "CANCER POSITIVE" ? "text-[#FF006E]" : "text-[#00FF88]"
           }`}>
@@ -64,6 +64,9 @@ export default function ReportSummary({ summary, metrics, patientInfo, results }
           {summary.patientPrediction === "CANCER POSITIVE" ? "HIGH RISK" : "LOW RISK"}
         </span>
       </div>
+      <p className="text-xs text-gray-400 mb-6 max-w-2xl">
+        <b>Clinical Context:</b> This diagnosis is generated using the <i>QuantumFusion</i> architecture (Xception backbone with Quantum Entanglement Feature Fusion). It analyzes morphological features of all uploaded cells to estimate the overall blast cell ratio.
+      </p>
 
       {/* Summary stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
@@ -79,11 +82,15 @@ export default function ReportSummary({ summary, metrics, patientInfo, results }
           <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Normal Cells</p>
           <p className="text-xl font-bold text-[#00FF88]">{summary.normalCount}</p>
         </div>
-        <div className="glass rounded-xl p-4 text-center">
+        <div className="glass rounded-xl p-4 text-center group relative">
           <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Blast Ratio</p>
           <p className="text-xl font-bold text-[#3A86FF]">
             {summary.total > 0 ? ((summary.cancerCount / summary.total) * 100).toFixed(1) : 0}%
           </p>
+          {/* Tooltip */}
+          <div className="absolute inset-x-0 bottom-full mb-2 hidden group-hover:block z-10 bg-[rgba(10,15,36,0.95)] backdrop-blur-md p-2 rounded-lg text-xs text-gray-300">
+            Ratio of leukemic blasts to total cells. >20% often indicates acute leukemia in bone marrow.
+          </div>
         </div>
       </div>
 

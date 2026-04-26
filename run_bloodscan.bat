@@ -8,8 +8,8 @@ echo ===================================================
 echo.
 
 :: Start the FastAPI Backend in a new window
-echo [~] Starting FastAPI Backend on Port 8000...
-start "BloodScan AI Backend" cmd /k "cd /d %~dp0backend && python -m uvicorn app:app --host 0.0.0.0 --port 8000"
+echo [~] Starting FastAPI Backend on Port 8080...
+start "BloodScan AI Backend" cmd /k "cd /d %~dp0backend && python -m uvicorn app:app --host 0.0.0.0 --port 8080"
 
 :: Wait a few seconds for the backend to initialize
 timeout /t 3 /nobreak >nul

@@ -45,10 +45,13 @@ export default function UploadPanel({ onUpload, fileCount }) {
 
           <div>
             <p className="text-[#00F5D4] text-lg font-semibold">
-              {isDragActive ? "Drop images here..." : "Drag & Drop Blood Cell Images"}
+              {isDragActive ? "Drop images here..." : "Drag & Drop Peripheral Blood Smear Images"}
             </p>
-            <p className="text-gray-500 text-sm mt-1">
-              PNG, JPG up to 50MB • Multiple files supported
+            <p className="text-gray-400 text-sm mt-1 max-w-md mx-auto">
+              Please upload <b>single-cell crops</b> from stained peripheral blood smears or bone marrow aspirates. The AI is optimized for identifying Acute Lymphoblastic Leukemia (ALL) blasts vs normal hemopoietic cells.
+            </p>
+            <p className="text-gray-500 text-xs mt-2">
+              Formats: PNG, JPG (up to 50MB) • Multiple files supported for batch analysis
             </p>
           </div>
 
